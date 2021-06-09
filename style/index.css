@@ -48,6 +48,7 @@ body {
   font-family: 'Dosis', sans-serif;
   font-size: xx-large;
   border: 1px solid;
+  padding: 3px;
 }
 
 .calc-button {

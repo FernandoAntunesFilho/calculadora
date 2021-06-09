@@ -5,7 +5,7 @@ const mountRow4 = () => {
     divButton.innerText = i;
     divButton.className = 'calc-button number';
     divButton.value = i;
-    divButton.onclick = (e) => { console.log(e.target.value); }; // ONCLICK
+    divButton.onclick = (e) => { clickNumberButton(e.target.value); }; // ONCLICK
     div.appendChild(divButton);
   }
   const ceButton = document.createElement('div');
@@ -25,7 +25,7 @@ const mountRow3 = () => {
     divButton.innerText = i;
     divButton.className = 'calc-button number';
     divButton.value = i;
-    divButton.onclick = (e) => { console.log(e.target.value); }; // ONCLICK
+    divButton.onclick = (e) => { clickNumberButton(e.target.value); }; // ONCLICK
     div.appendChild(divButton);
   }
   const multiButton = document.createElement('div');
@@ -45,7 +45,7 @@ const mountRow2 = () => {
     divButton.innerText = i;
     divButton.className = 'calc-button number';
     divButton.value = i;
-    divButton.onclick = (e) => { console.log(e.target.value); }; // ONCLICK
+    divButton.onclick = (e) => { clickNumberButton(e.target.value); }; // ONCLICK
     div.appendChild(divButton);
   }
   const minusButton = document.createElement('div');
@@ -73,7 +73,7 @@ const mountRow1 = () => {
   equalButton.className = 'calc-button';
   plusButton.className = 'calc-button plus-button';
   zeroButton.value = 0;
-  zeroButton.onclick = (e) => { console.log(e.target.value); }; // ONCLICK
+  zeroButton.onclick = (e) => { clickNumberButton(e.target.value); }; // ONCLICK
   div.appendChild(zeroButton);
   div.appendChild(commaButton);
   div.appendChild(equalButton);
@@ -86,4 +86,31 @@ const mountCalcButtons = () => {
   mountRow3();
   mountRow4();
 };
+
 mountCalcButtons();
+
+let primeiroNum = null;
+let segundoNum = null;
+let operacao;
+
+const mostraResultado = (resultado) => {
+  const display = document.querySelector('.calc-display');
+  if (resultado) {
+    display.innerText = resultado;
+  } else {
+    display.innerText = 0;
+  }
+};
+
+const clickNumberButton = (value) => {
+  if (!operacao) {
+    if (primeiroNum) {
+      primeiroNum += value.toString();
+    } else {
+      primeiroNum = value.toString();
+    }
+  }
+  mostraResultado(primeiroNum);
+};
+
+mostraResultado();

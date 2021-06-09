@@ -17,16 +17,41 @@ const soma = (valor1, valor2) => {
   const total = Number(num1) + Number(num2);
   const display = document.querySelector('.calc-display');
   display.innerText = total.toString().replace('.', ',');
-  console.log(total);
 };
 
-const subtrai = (primeiroNum, segundoNum) => {};
+const subtrai = (valor1, valor2) => {
+  const num1 = valor1.replace(',', '.');
+  const num2 = valor2.replace(',', '.');
+  const total = Number(num1) - Number(num2);
+  const display = document.querySelector('.calc-display');
+  display.innerText = total.toString().replace('.', ',');
+};
 
-const multiplica = (primeiroNum, segundoNum) => {};
+const multiplica = (valor1, valor2) => {
+  const num1 = valor1.replace(',', '.');
+  const num2 = valor2.replace(',', '.');
+  const total = Number(num1) * Number(num2);
+  const display = document.querySelector('.calc-display');
+  display.innerText = total.toString().replace('.', ',');
+};
 
-const divide = (primeiroNum, segundoNum) => {};
+const divide = (valor1, valor2) => {
+  const num1 = valor1.replace(',', '.');
+  const num2 = valor2.replace(',', '.');
+  let total = 'Error';
+  if (num2 > 0) total = Number(num1) / Number(num2);
+  const display = document.querySelector('.calc-display');
+  display.innerText = total.toString().replace('.', ',');
+};
 
-const porcentagem = (primeiroNum, segundoNum) => {};
+const porcentagem = (valor1, valor2) => {
+  const num1 = valor1.replace(',', '.');
+  const num2 = valor2.replace(',', '.');
+  const total = Number(num2) * (Number(num1) / 100);
+  const display = document.querySelector('.calc-display');
+  display.innerText = total.toString().replace('.', ',');
+  console.log(total);
+};
 
 const clickEqualButton = () => {
   if (primeiroNum && segundoNum && operacao) {
@@ -58,6 +83,11 @@ const clickOperationButton = (value) => {
 
 const virgulaExiste = () => {
   const display = document.querySelector('.calc-display');
+  if (!operacao) {
+    const displayValue = display.innerText;
+    return displayValue.search(',');
+  }
+  display.innerText = 0;
   const displayValue = display.innerText;
   return displayValue.search(',');
 };

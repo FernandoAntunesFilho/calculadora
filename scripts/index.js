@@ -1,3 +1,46 @@
+let primeiroNum = null;
+let segundoNum = null;
+let operacao;
+
+const mostraResultado = (resultado) => {
+  const display = document.querySelector('.calc-display');
+  if (resultado) {
+    display.innerText = resultado;
+  } else {
+    display.innerText = 0;
+  }
+};
+
+const virgulaExiste = () => {
+  const display = document.querySelector('.calc-display');
+  const displayValue = display.innerText;
+  return displayValue.search(',');
+};
+
+const clickVirgulaButton = () => {
+  if (virgulaExiste() === -1) {
+    if (!operacao) {
+      if (primeiroNum) {
+        primeiroNum += ',';
+      } else {
+        primeiroNum = '0,';
+      }
+    }
+  }
+  mostraResultado(primeiroNum);
+};
+
+const clickNumberButton = (value) => {
+  if (!operacao) {
+    if (primeiroNum) {
+      primeiroNum += value.toString();
+    } else {
+      primeiroNum = value.toString();
+    }
+  }
+  mostraResultado(primeiroNum);
+};
+
 const mountRow4 = () => {
   const div = document.querySelector('.row-4');
   for (let i = 7; i <= 9; i += 1) {
@@ -74,6 +117,7 @@ const mountRow1 = () => {
   plusButton.className = 'calc-button plus-button';
   zeroButton.value = 0;
   zeroButton.onclick = (e) => { clickNumberButton(e.target.value); }; // ONCLICK
+  commaButton.onclick = () => { clickVirgulaButton(); };
   div.appendChild(zeroButton);
   div.appendChild(commaButton);
   div.appendChild(equalButton);
@@ -88,29 +132,5 @@ const mountCalcButtons = () => {
 };
 
 mountCalcButtons();
-
-let primeiroNum = null;
-let segundoNum = null;
-let operacao;
-
-const mostraResultado = (resultado) => {
-  const display = document.querySelector('.calc-display');
-  if (resultado) {
-    display.innerText = resultado;
-  } else {
-    display.innerText = 0;
-  }
-};
-
-const clickNumberButton = (value) => {
-  if (!operacao) {
-    if (primeiroNum) {
-      primeiroNum += value.toString();
-    } else {
-      primeiroNum = value.toString();
-    }
-  }
-  mostraResultado(primeiroNum);
-};
 
 mostraResultado();

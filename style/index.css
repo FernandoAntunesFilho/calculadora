@@ -1,37 +1,71 @@
+body {
+  background-color: chocolate;
+}
+
 .main-container {
-  width: 60%;
+  width: 40%;
   margin: 0 auto;
+  border: 1px solid;
 }
 
 .row-1 {
   background-color: blue;
   display: flex;
   justify-content: space-around;
-  cursor: pointer;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
 
 .row-2 {
   background-color: green;
   display: flex;
   justify-content: space-around;
-  cursor: pointer;
+  padding-top: 2%;
 }
 
 .row-3 {
   background-color: red;
   display: flex;
   justify-content: space-around;
-  cursor: pointer;
+  padding-top: 2%;
 }
 
 .row-4 {
   background-color: yellow;
   display: flex;
   justify-content: space-around;
-  cursor: pointer;
+  padding-top: 2%;
 }
 
 .calc-display {
   background-color: teal;
   text-align: end;
+  margin: 3%;
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-family: 'Dosis', sans-serif;
+  font-size: xx-large;
+  border: 1px solid;
+}
+
+.calc-button {
+  border: 1px solid;
+  cursor: pointer;
+  width: 15%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Rubik', sans-serif;
+  font-size: x-large;
+}
+
+.plus-button {
+  width: 35%;
+}
+
+.number {
+  background-color: white;
 }

@@ -1,6 +1,6 @@
 let primeiroNum = null;
 let segundoNum = null;
-let operacao;
+let operacao = null;
 
 const mostraResultado = (resultado) => {
   const display = document.querySelector('.calc-display');
@@ -9,6 +9,51 @@ const mostraResultado = (resultado) => {
   } else {
     display.innerText = 0;
   }
+};
+
+const soma = (valor1, valor2) => {
+  const num1 = valor1.replace(',', '.');
+  const num2 = valor2.replace(',', '.');
+  const total = Number(num1) + Number(num2);
+  const display = document.querySelector('.calc-display');
+  display.innerText = total.toString().replace('.', ',');
+  console.log(total);
+};
+
+const subtrai = (primeiroNum, segundoNum) => {};
+
+const multiplica = (primeiroNum, segundoNum) => {};
+
+const divide = (primeiroNum, segundoNum) => {};
+
+const porcentagem = (primeiroNum, segundoNum) => {};
+
+const clickEqualButton = () => {
+  if (primeiroNum && segundoNum && operacao) {
+    switch (operacao) {
+      case '+':
+        soma(primeiroNum, segundoNum);
+        break;
+      case '-':
+        subtrai(primeiroNum, segundoNum);
+        break;
+      case 'x':
+        multiplica(primeiroNum, segundoNum);
+        break;
+      case '/':
+        divide(primeiroNum, segundoNum);
+        break;
+      case '%':
+        porcentagem(primeiroNum, segundoNum);
+        break;
+      default:
+        break;
+    }
+  }
+};
+
+const clickOperationButton = (value) => {
+  if (primeiroNum && !segundoNum) operacao = value;
 };
 
 const virgulaExiste = () => {
@@ -25,9 +70,16 @@ const clickVirgulaButton = () => {
       } else {
         primeiroNum = '0,';
       }
+      mostraResultado(primeiroNum);
+    } else {
+      if (segundoNum) {
+        segundoNum += ',';
+      } else {
+        segundoNum = '0,';
+      }
+      mostraResultado(segundoNum);
     }
   }
-  mostraResultado(primeiroNum);
 };
 
 const clickNumberButton = (value) => {
@@ -37,8 +89,15 @@ const clickNumberButton = (value) => {
     } else {
       primeiroNum = value.toString();
     }
+    mostraResultado(primeiroNum);
+  } else {
+    if (segundoNum) {
+      segundoNum += value.toString();
+    } else {
+      segundoNum = value.toString();
+    }
+    mostraResultado(segundoNum);
   }
-  mostraResultado(primeiroNum);
 };
 
 const mountRow4 = () => {
@@ -77,6 +136,8 @@ const mountRow3 = () => {
   divideButton.innerText = '÷';
   multiButton.className = 'calc-button';
   divideButton.className = 'calc-button';
+  multiButton.onclick = () => { clickOperationButton('x'); }; // OPERAÇÕES ONCLICK
+  divideButton.onclick = () => { clickOperationButton('/'); }; // OPERAÇÕES ONCLICK
   div.appendChild(multiButton);
   div.appendChild(divideButton);
 };
@@ -97,6 +158,8 @@ const mountRow2 = () => {
   percentButton.innerText = '%';
   minusButton.className = 'calc-button';
   percentButton.className = 'calc-button';
+  minusButton.onclick = () => { clickOperationButton('-'); }; // OPERAÇÕES ONCLICK
+  percentButton.onclick = () => { clickOperationButton('%'); }; // OPERAÇÕES ONCLICK
   div.appendChild(minusButton);
   div.appendChild(percentButton);
 };
@@ -118,6 +181,8 @@ const mountRow1 = () => {
   zeroButton.value = 0;
   zeroButton.onclick = (e) => { clickNumberButton(e.target.value); }; // ONCLICK
   commaButton.onclick = () => { clickVirgulaButton(); };
+  plusButton.onclick = () => { clickOperationButton('+'); }; // OPERAÇÕES ONCLICK
+  equalButton.onclick = () => { clickEqualButton(); };
   div.appendChild(zeroButton);
   div.appendChild(commaButton);
   div.appendChild(equalButton);

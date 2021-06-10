@@ -50,7 +50,22 @@ const porcentagem = (valor1, valor2) => {
   const total = Number(num2) * (Number(num1) / 100);
   const display = document.querySelector('.calc-display');
   display.innerText = total.toString().replace('.', ',');
-  console.log(total);
+};
+
+const clickCButon = () => {
+  primeiroNum = null;
+  segundoNum = null;
+  operacao = null;
+  mostraResultado();
+};
+
+const clickCEButton = () => {
+  if (operacao) {
+    segundoNum = null;
+    mostraResultado();
+  } else {
+    clickCButon();
+  }
 };
 
 const clickEqualButton = () => {
@@ -146,6 +161,8 @@ const mountRow4 = () => {
   cButton.innerText = 'C';
   ceButton.className = 'calc-button';
   cButton.className = 'calc-button';
+  cButton.onclick = () => { clickCButon(); };
+  ceButton.onclick = () => { clickCEButton(); };
   div.appendChild(ceButton);
   div.appendChild(cButton);
 };

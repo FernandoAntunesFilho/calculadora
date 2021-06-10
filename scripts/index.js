@@ -159,8 +159,8 @@ const mountRow4 = () => {
   const cButton = document.createElement('div');
   ceButton.innerText = 'CE';
   cButton.innerText = 'C';
-  ceButton.className = 'calc-button';
-  cButton.className = 'calc-button';
+  ceButton.className = 'calc-button type-c';
+  cButton.className = 'calc-button type-c';
   cButton.onclick = () => { clickCButon(); };
   ceButton.onclick = () => { clickCEButton(); };
   div.appendChild(ceButton);
@@ -181,8 +181,8 @@ const mountRow3 = () => {
   const divideButton = document.createElement('div');
   multiButton.innerText = 'X';
   divideButton.innerText = '÷';
-  multiButton.className = 'calc-button';
-  divideButton.className = 'calc-button';
+  multiButton.className = 'calc-button op-button';
+  divideButton.className = 'calc-button op-button';
   multiButton.onclick = () => { clickOperationButton('x'); }; // OPERAÇÕES ONCLICK
   divideButton.onclick = () => { clickOperationButton('/'); }; // OPERAÇÕES ONCLICK
   div.appendChild(multiButton);
@@ -203,8 +203,8 @@ const mountRow2 = () => {
   const percentButton = document.createElement('div');
   minusButton.innerText = '-';
   percentButton.innerText = '%';
-  minusButton.className = 'calc-button';
-  percentButton.className = 'calc-button';
+  minusButton.className = 'calc-button op-button';
+  percentButton.className = 'calc-button op-button';
   minusButton.onclick = () => { clickOperationButton('-'); }; // OPERAÇÕES ONCLICK
   percentButton.onclick = () => { clickOperationButton('%'); }; // OPERAÇÕES ONCLICK
   div.appendChild(minusButton);
@@ -222,9 +222,9 @@ const mountRow1 = () => {
   equalButton.innerText = '=';
   plusButton.innerText = '+';
   zeroButton.className = 'calc-button number';
-  commaButton.className = 'calc-button';
-  equalButton.className = 'calc-button';
-  plusButton.className = 'calc-button plus-button';
+  commaButton.className = 'calc-button op-button';
+  equalButton.className = 'calc-button op-button';
+  plusButton.className = 'calc-button plus-button op-button';
   zeroButton.value = 0;
   zeroButton.onclick = (e) => { clickNumberButton(e.target.value); }; // ONCLICK
   commaButton.onclick = () => { clickVirgulaButton(); };
@@ -234,6 +234,11 @@ const mountRow1 = () => {
   div.appendChild(commaButton);
   div.appendChild(equalButton);
   div.appendChild(plusButton);
+};
+
+const credit = () => {
+  const creditDiv = document.querySelector('.credit');
+  creditDiv.innerText = 'Desenvolvido por Fernando Antunes | 2021';
 };
 
 const mountCalcButtons = () => {
@@ -246,3 +251,5 @@ const mountCalcButtons = () => {
 mountCalcButtons();
 
 mostraResultado();
+
+credit();

@@ -152,7 +152,7 @@ const mountRow4 = () => {
     divButton.innerText = i;
     divButton.className = 'calc-button number';
     divButton.value = i;
-    divButton.onclick = (e) => { clickNumberButton(e.target.value); }; // ONCLICK
+    divButton.onclick = (e) => { clickNumberButton(e.target.value); };
     div.appendChild(divButton);
   }
   const ceButton = document.createElement('div');
@@ -174,7 +174,7 @@ const mountRow3 = () => {
     divButton.innerText = i;
     divButton.className = 'calc-button number';
     divButton.value = i;
-    divButton.onclick = (e) => { clickNumberButton(e.target.value); }; // ONCLICK
+    divButton.onclick = (e) => { clickNumberButton(e.target.value); };
     div.appendChild(divButton);
   }
   const multiButton = document.createElement('div');
@@ -183,8 +183,8 @@ const mountRow3 = () => {
   divideButton.innerText = '÷';
   multiButton.className = 'calc-button op-button';
   divideButton.className = 'calc-button op-button';
-  multiButton.onclick = () => { clickOperationButton('x'); }; // OPERAÇÕES ONCLICK
-  divideButton.onclick = () => { clickOperationButton('/'); }; // OPERAÇÕES ONCLICK
+  multiButton.onclick = () => { clickOperationButton('x'); };
+  divideButton.onclick = () => { clickOperationButton('/'); };
   div.appendChild(multiButton);
   div.appendChild(divideButton);
 };
@@ -196,7 +196,7 @@ const mountRow2 = () => {
     divButton.innerText = i;
     divButton.className = 'calc-button number';
     divButton.value = i;
-    divButton.onclick = (e) => { clickNumberButton(e.target.value); }; // ONCLICK
+    divButton.onclick = (e) => { clickNumberButton(e.target.value); };
     div.appendChild(divButton);
   }
   const minusButton = document.createElement('div');
@@ -205,8 +205,8 @@ const mountRow2 = () => {
   percentButton.innerText = '%';
   minusButton.className = 'calc-button op-button';
   percentButton.className = 'calc-button op-button';
-  minusButton.onclick = () => { clickOperationButton('-'); }; // OPERAÇÕES ONCLICK
-  percentButton.onclick = () => { clickOperationButton('%'); }; // OPERAÇÕES ONCLICK
+  minusButton.onclick = () => { clickOperationButton('-'); };
+  percentButton.onclick = () => { clickOperationButton('%'); };
   div.appendChild(minusButton);
   div.appendChild(percentButton);
 };
@@ -226,9 +226,9 @@ const mountRow1 = () => {
   equalButton.className = 'calc-button op-button';
   plusButton.className = 'calc-button plus-button op-button';
   zeroButton.value = 0;
-  zeroButton.onclick = (e) => { clickNumberButton(e.target.value); }; // ONCLICK
+  zeroButton.onclick = (e) => { clickNumberButton(e.target.value); };
   commaButton.onclick = () => { clickVirgulaButton(); };
-  plusButton.onclick = () => { clickOperationButton('+'); }; // OPERAÇÕES ONCLICK
+  plusButton.onclick = () => { clickOperationButton('+'); };
   equalButton.onclick = () => { clickEqualButton(); };
   div.appendChild(zeroButton);
   div.appendChild(commaButton);
